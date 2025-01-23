@@ -1,8 +1,8 @@
-import "./index.css";
 import ninjaLogo from '../../assets/ninjaone.svg'
+import {HeaderContainer, LogoImage} from "./styles/index.jsx";
 
 export const Header = () => (
-	<div className='header'>
-		<img className="header__logo" src={ninjaLogo} alt="Logo" />
-	</div>
+	<HeaderContainer>
+		<LogoImage src={ninjaLogo} alt="Logo" />
+	</HeaderContainer>
 );

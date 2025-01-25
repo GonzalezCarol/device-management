@@ -8,5 +8,6 @@ export const useSearch = () => {
 	const handleSearchChange = (e) => {
 		setSearchValue(e.target.value);
 	};
+
 	return {searchValue, handleSearchChange}
 }

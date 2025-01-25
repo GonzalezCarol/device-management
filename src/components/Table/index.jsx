@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import {Icon, StyledTable, Subtitle, TableCell, TableContainer, TableHeader, TableRow} from "./styles";
 import {deviceIcon} from "../../utils/deviceIcons/index.js";
 import {capitalizeFirstLetter} from "../../utils/capitalizeFirstLetter/index.js";
+import {useMainProps} from "../../contexts/MainContext/index.jsx";
 
 
-export const Table = ({devices}) => {
+export const Table = () => {
+	const {filteredDevices: devices} = useMainProps()
 	return (
 		<TableContainer>
 			<StyledTable>
@@ -24,7 +26,7 @@ export const Table = ({devices}) => {
 						<TableCell
 							color={'#6E6D7A'}>
 							<Subtitle>
-								{capitalizeFirstLetter(device?.type)} Workstation - ${device?.hdd_capacity} GB
+								{capitalizeFirstLetter(device?.type)} Workstation - {device?.hdd_capacity} GB
 							</Subtitle>
 						</TableCell>
 					</TableRow>

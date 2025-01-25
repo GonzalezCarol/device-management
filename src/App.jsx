@@ -11,11 +11,11 @@ function App() {
 
 	return (
 		<>
-			<MainProvider>
-				<QueryClientProvider client={queryClient}>
+			<QueryClientProvider client={queryClient}>
+				<MainProvider>
 					<Main/>
-				</QueryClientProvider>
-			</MainProvider>
+				</MainProvider>
+			</QueryClientProvider>
 		</>
 	)
 }

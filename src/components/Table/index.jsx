@@ -1,16 +1,11 @@
 import React from "react";
-import {useGetDevices} from "../../hooks/apiHooks/useGetDevices/index.js";
-import {DeviceIcon, StyledTable, TableCell, TableContainer, TableHeader, TableRow} from "./styles/index.jsx";
+import PropTypes from 'prop-types';
+import {Icon, StyledTable, Subtitle, TableCell, TableContainer, TableHeader, TableRow} from "./styles";
 import {deviceIcon} from "../../utils/deviceIcons/index.js";
 import {capitalizeFirstLetter} from "../../utils/capitalizeFirstLetter/index.js";
 
-export const Table = () => {
-	const {data: devices, isLoading, error} = useGetDevices();
 
-	if (isLoading) return <p>Loading...</p>;
-	if (error) return <p>Error: {error.message}</p>;
-
-	console.log(devices)
+export const Table = ({devices}) => {
 	return (
 		<TableContainer>
 			<StyledTable>
@@ -21,17 +16,32 @@ export const Table = () => {
 				</thead>
 				<tbody>
 				{devices?.map((device) => (
-					<TableRow key={device?.id}>
+					<TableRow key={device?.id} color={'#f1f1f1'}>
 						<TableCell>
-							<DeviceIcon src={deviceIcon[device?.type]}/>
+							<Icon src={deviceIcon[device?.type]}/>
 							{device?.system_name}
 						</TableCell>
 						<TableCell
-							color={'#6E6D7A'}>{`${capitalizeFirstLetter(device?.type)} Workstation - ${device?.hdd_capacity} GB`}</TableCell>
+							color={'#6E6D7A'}>
+							<Subtitle>
+								{capitalizeFirstLetter(device?.type)} Workstation - ${device?.hdd_capacity} GB
+							</Subtitle>
+						</TableCell>
 					</TableRow>
 				))}
 				</tbody>
 			</StyledTable>
 		</TableContainer>
 	);
+};
+
+Table.propTypes = {
+	devices: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+			system_name: PropTypes.string.isRequired,
+			type: PropTypes.oneOf(['WINDOWS', 'LINUX', 'MAC']).isRequired,
+			hdd_capacity: PropTypes.string.isRequired,
+		})
+	)
 };

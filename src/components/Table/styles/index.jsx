@@ -5,7 +5,7 @@ export const StyledTable = styled.table`
     width: 100%;
 `;
 export const TableHeader = styled.th`
-    padding: 5px;
+    padding: 0 12px 5px;
     color: #000;
     border-bottom: 1px solid #CBCFD3;
     width: 100%;
@@ -26,14 +26,14 @@ export const TableRow = styled.tr`
     border-bottom: 1px solid #ddd;
 
     &:hover {
-        background-color: #f1f1f1;
+        background-color: ${(props) => props.color || '#FFF'};
     }
 `;
 
 export const TableCell = styled.td`
     padding: 5px;
     text-align: left;
-    color: ${(props) => props.color || 'black'};
+    color: ${({color}) => color || '#000'};
     display: flex;
     gap: 3px;
     font-size: 14px;
@@ -41,19 +41,22 @@ export const TableCell = styled.td`
     line-height: 16.94px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-		align-items: flex-end;
+    align-items: flex-end;
 `;
 
 export const TableContainer = styled.div`
     width: 100%;
     margin: auto;
     overflow: hidden;
+		padding: 10px 0;
 `;
 
-export const DeviceIcon = styled.img`
+export const Icon = styled.img`
     width: 16px;
     height: 16px;
-    padding: 8px 0px 0px 0px;
+    padding: 0 8px 0;
     gap: 8px;
-    opacit: 0px;
+`
+export const Subtitle = styled.span`
+    padding: 0 8px 4px;
 `

@@ -1,5 +1,5 @@
 import React from 'react';
-import {TableFilterContainer} from './styles';
+import {FilterContainer, TableFilterContainer} from './styles';
 import {SearchFilter} from '../SearchFilter';
 import {Dropdown} from '../Dropdown';
 import {useMainProps} from '../../contexts/MainContext';
@@ -26,23 +26,24 @@ export const TableFilter = () => {
 
 	return (
 		<TableFilterContainer>
-			<SearchFilter/>
+			<FilterContainer>
+				<SearchFilter/>
+				<Dropdown
+					label={'Device Type: All'}
+					onChange={onChangeDeviceType}
+					options={optionsDeviceType}
+					dropdownKey="deviceType"
+					selectedValue={selectedDropdowns?.deviceType}
+				/>
 
-			<Dropdown
-				label={'Device Type: All'}
-				onChange={onChangeDeviceType}
-				options={optionsDeviceType}
-				dropdownKey="deviceType"
-				selectedValue={selectedDropdowns?.deviceType}
-			/>
-
-			<Dropdown
-				label={'Sort by: HDD Capacity (Descending)'}
-				onChange={onChangeDeviceCapacityDesc}
-				options={OPTIONS_SORT_BY}
-				dropdownKey="sortBy"
-				selectedValue={selectedDropdowns?.sortBy}
-			/>
+				<Dropdown
+					label={'Sort by: HDD Capacity (Descending)'}
+					onChange={onChangeDeviceCapacityDesc}
+					options={OPTIONS_SORT_BY}
+					dropdownKey="sortBy"
+					selectedValue={selectedDropdowns?.sortBy}
+				/>
+			</FilterContainer>
 
 			<IconButtonComponent icon={refreshIcon} onClick={onRefreshFilters}/>
 		</TableFilterContainer>

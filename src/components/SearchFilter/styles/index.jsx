@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchContainer = styled.div`
+export const SearchFilterContainer = styled.div`
     position: relative;
     width: 270px;
 `;

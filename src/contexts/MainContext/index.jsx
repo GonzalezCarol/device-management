@@ -18,7 +18,7 @@ export const MainProvider = ({children}) => {
 		if (!selectedDropdowns) return;
 		const dropdownFilters = Object.keys(selectedDropdowns).map(key => ({
 			type: 'dropdown',
-			value: selectedDropdowns[key],
+			value: selectedDropdowns[key].type,
 			dropdownKey: key
 		}));
 

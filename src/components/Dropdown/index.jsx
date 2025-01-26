@@ -10,13 +10,16 @@ import {
 } from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
 
-export const Dropdown = ({placeholder, label, onChange, options, selectedValue}) => {
+export const Dropdown = ({placeholder, label, onChange, options, selectedValue, name, width, top}) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleDropdown = () => setIsOpen(prev => !prev);
 
 	const handleSelectOption = (type) => {
-		onChange(type);
+		onChange({
+			type,
+			name
+		});
 		setIsOpen(false);
 	};
 
@@ -32,8 +35,9 @@ export const Dropdown = ({placeholder, label, onChange, options, selectedValue})
 					onClick={toggleDropdown}
 					readOnly
 					length={selectedValue?.length || label?.length || placeholder?.length}
+					width={width}
 				/>
-				<ArrowIcon src={arrowDown} alt="arrow-down" onClick={toggleDropdown}/>
+				<ArrowIcon src={arrowDown} alt="arrow-down" onClick={toggleDropdown} top={top}/>
 			</DropdownLabelContainer>
 
 			<DropdownMenu isOpen={isOpen}>
@@ -54,8 +58,11 @@ export const Dropdown = ({placeholder, label, onChange, options, selectedValue})
 
 Dropdown.propTypes = {
 	label: PropTypes.string.isRequired,
-	onChange: PropTypes.func.isRequired,
-	options: PropTypes.arrayOf(PropTypes.string).isRequired,
-	selectedValue: PropTypes.string,
+	onChange:
+	PropTypes.func.isRequired,
+	options:
+	PropTypes.arrayOf(PropTypes.string).isRequired,
+	selectedValue:
+	PropTypes.string,
 };
 

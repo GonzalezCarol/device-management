@@ -34,7 +34,7 @@ export const TableFilter = () => {
 					onChange={onChangeDeviceType}
 					options={options}
 					dropdownKey="deviceType"
-					selectedValue={selectedDropdowns?.deviceType}
+					selectedValue={selectedDropdowns?.deviceType.type}
 				/>
 
 				<Dropdown
@@ -42,7 +42,7 @@ export const TableFilter = () => {
 					onChange={onChangeDeviceCapacityDesc}
 					options={OPTIONS_SORT_BY}
 					dropdownKey="sortBy"
-					selectedValue={selectedDropdowns?.sortBy}
+					selectedValue={selectedDropdowns?.sortBy?.type}
 				/>
 			</FilterContainer>
 

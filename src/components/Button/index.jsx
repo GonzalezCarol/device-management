@@ -1,15 +1,19 @@
-import addIcon from '../../assets/add-icon.svg'
 import {StyledButton} from "./styles/index.jsx";
 
-export const Button = ({label, onClick}) => {
+export const Button = ({label, onClick, icon, width, height, typeColor}) => {
 
 	return (
 		<StyledButton
 			type="button"
 			onClick={() => onClick()}
+			width={width}
+			height={height}
+			typeColor={typeColor}
 		>
 			<span>{label}</span>
-			<img src={addIcon}/>
+			{icon && (
+				<img src={icon}/>
+			)}
 		</StyledButton>
 	);
 };

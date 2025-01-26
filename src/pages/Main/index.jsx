@@ -7,6 +7,7 @@ import {TableFilter} from "../../components/TableFilter";
 import {useMainProps} from "../../contexts/MainContext/index.jsx";
 import {Button} from "../../components/Button/index.jsx";
 import {DeviceModal} from "../../components/DeviceModal/index.jsx";
+import addIcon from '../../assets/add-icon.svg'
 
 export const Main = () => {
 	const {filteredDevices: devices} = useMainProps();
@@ -17,7 +18,7 @@ export const Main = () => {
 		<BodyContainer>
 			<DeviceContainer>
 				<Title>Devices</Title>
-				<Button label="Add device" onClick={() => setIsDeviceModalOpen(true)}/>
+				<Button label="Add device" icon={addIcon} onClick={() => setIsDeviceModalOpen(true)}/>
 				<DeviceModal
 					isDeviceModalOpen={isDeviceModalOpen}
 					onClose={() => setIsDeviceModalOpen(false)}

@@ -14,8 +14,7 @@ export const TextField = styled.input`
     cursor: pointer;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: ${(props) => `${props.length}ch`};
-
+    width: ${(props) => props?.width || `${props.length}ch`};
     min-width: 150px;
     max-width: 500px;
 
@@ -27,7 +26,6 @@ export const TextField = styled.input`
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-
     }
 
     &:focus {
@@ -63,13 +61,16 @@ export const DropdownItem = styled.li`
 export const ArrowIcon = styled.img`
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: ${(props) => props?.top ? `${props?.top}%` : '50%'};
     transform: translateY(-50%);
     cursor: pointer;
-`;
+`
+
 
 export const DropdownLabelContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 3px;
 `
+
+

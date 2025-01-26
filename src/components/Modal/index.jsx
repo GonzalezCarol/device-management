@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CloseButton, ModalContainer, ModalOverlay, ModalTitle} from "./styles/index.jsx";
+import {ModalContainer, ModalOverlay, ModalTitle} from "./styles/index.jsx";
 
 export const Modal = ({isModalOpen, onClose, modalTitle, children}) => {
 	if (!isModalOpen) return null;
@@ -18,7 +18,6 @@ export const Modal = ({isModalOpen, onClose, modalTitle, children}) => {
 			<ModalContainer onClick={handleModalContainerClick}>
 				<ModalTitle>{modalTitle}</ModalTitle>
 				<div>{children}</div>
-				<CloseButton onClick={() => onClose()}>Close</CloseButton>
 			</ModalContainer>
 		</ModalOverlay>
 	);

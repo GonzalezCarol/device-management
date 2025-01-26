@@ -36,7 +36,8 @@ export const CloseButton = styled.button`
     }
 `;
 
-export const ModalTitle = styled.span`
+export const ModalTitle = styled.div`
+    padding: 4px 0px 17px 0;
     font-size: 24px;
     font-weight: 500;
     line-height: 29.05px;

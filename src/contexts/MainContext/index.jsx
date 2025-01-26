@@ -13,6 +13,7 @@ export const MainProvider = ({children}) => {
 	const {data: devicesData, isLoading} = useGetDevices();
 	const {searchValue, handleSearchChange} = useSearch();
 	const {selectedDropdowns, handleDropdownChange} = useDropdown()
+	const {refreshFilters, handleRefreshChange} = useRefreshFilter(handleSearchChange, handleDropdownChange);
 
 	const filter = useMemo(() => {
 		if (!selectedDropdowns) return;
@@ -30,7 +31,6 @@ export const MainProvider = ({children}) => {
 	}, [selectedDropdowns, searchValue]);
 
 	const {filteredDevices} = useDevicesFilter(filter, devicesData);
-	const {refreshFilters, handleRefreshChange} = useRefreshFilter(handleSearchChange, handleDropdownChange);
 
 	const contextValue = useMemo(() => ({
 		searchValue,

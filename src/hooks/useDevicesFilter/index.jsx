@@ -1,20 +1,21 @@
 import {useState, useEffect, useMemo} from "react";
 
 const sortHDDCapacityAscending = (devices) => {
-	return devices.sort((a, b) => a.hdd_capacity - b.hdd_capacity);
+	return [...devices].sort((a, b) => a.hdd_capacity - b.hdd_capacity);
 };
 
 const sortHDDCapacityDescending = (devices) => {
-	return devices.sort((a, b) => b.hdd_capacity - a.hdd_capacity);
+	return [...devices].sort((a, b) => b.hdd_capacity - a.hdd_capacity);
 };
 
 const sortNameAscending = (devices) => {
-	return devices.sort((a, b) => a.system_name.localeCompare(b.system_name));
+	return [...devices].sort((a, b) => a.system_name.localeCompare(b.system_name));
 };
 
 const sortNameDescending = (devices) => {
-	return devices.sort((a, b) => b.system_name.localeCompare(a.system_name));
+	return [...devices].sort((a, b) => b.system_name.localeCompare(a.system_name));
 };
+
 
 const sortFunctions = {
 	'HDD Capacity (Ascending)': sortHDDCapacityAscending,

@@ -11,8 +11,14 @@ export const useRefreshFilter = (handleSearchChange, handleDropdownChange) => {
 		if (refreshFilters) {
 			const resetEvent = {target: {value: ''}};
 			handleSearchChange(resetEvent);
-			handleDropdownChange('deviceType', '')
-			handleDropdownChange('sortBy', '')
+			handleDropdownChange('deviceType', {
+				type: '',
+				value: ''
+			})
+			handleDropdownChange('sortBy', {
+				type: '',
+				value: ''
+			})
 
 			setRefreshFilters(false);
 		}

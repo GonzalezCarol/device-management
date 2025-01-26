@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const DropdownContainer = styled.div`
     position: relative;
@@ -7,15 +7,18 @@ export const DropdownContainer = styled.div`
 
 export const TextField = styled.input`
     padding: 10px;
+    padding-right: 30px;
     border: 1px solid #ddd;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     color: #211F33;
-    width: auto;
-    min-width: 150px;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: ${(props) => `${props.length}ch`};
+
+    min-width: 150px;
+    max-width: 500px;
 
     &::placeholder {
         color: #aaa;
@@ -52,8 +55,9 @@ export const DropdownItem = styled.li`
 `;
 
 export const ArrowIcon = styled.img`
-
-
-
-`
-
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+`;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';  // Import PropTypes
-import {ArrowIcon, DropdownContainer, DropdownItem, DropdownMenu, TextField} from "./styles/index.jsx";
+import PropTypes from 'prop-types';
+import {ArrowIcon, DropdownContainer, DropdownItem, DropdownMenu, TextField} from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
 
 const Dropdown = ({label, onChange, options}) => {
@@ -17,13 +17,17 @@ const Dropdown = ({label, onChange, options}) => {
 
 	return (
 		<DropdownContainer>
-			<TextField
-				value={selectedType}
-				placeholder={label}
-				onClick={toggleDropdown}
-				readOnly
-			/>
-			<ArrowIcon src={arrowDown} alt="arrow-down"/>
+			<div style={{position: 'relative'}}>
+				<TextField
+					value={selectedType}
+					placeholder={label}
+					onClick={toggleDropdown}
+					readOnly
+					length={selectedType.length || label.length}
+				/>
+				<ArrowIcon src={arrowDown} alt="arrow-down" onClick={toggleDropdown}/>
+			</div>
+
 			<DropdownMenu isOpen={isOpen}>
 				{options?.length === 0 ? (
 					<DropdownItem>No options available</DropdownItem>

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import {Icon, StyledTable, Subtitle, TableCell, TableContainer, TableHeader, TableRow} from "./styles";
 import {deviceIcon} from "../../utils/deviceIcons/index.js";
 import {capitalizeFirstLetter} from "../../utils/capitalizeFirstLetter/index.js";
@@ -35,15 +34,4 @@ export const Table = () => {
 			</StyledTable>
 		</TableContainer>
 	);
-};
-
-Table.propTypes = {
-	devices: PropTypes.arrayOf(
-		PropTypes.shape({
-			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-			system_name: PropTypes.string.isRequired,
-			type: PropTypes.oneOf(['WINDOWS', 'LINUX', 'MAC']).isRequired,
-			hdd_capacity: PropTypes.string.isRequired,
-		})
-	)
 };

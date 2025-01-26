@@ -23,7 +23,7 @@ const sortFunctions = {
 	'Name (Descending)': sortNameDescending
 };
 
-export const useFilterDevices = (filterValue, devicesData, dropdownValue) => {
+export const useDevicesFilter = (filterValue, devicesData) => {
 	const [filteredDevices, setFilteredDevices] = useState([]);
 
 	const searchFilter = (searchValue, devices) => {
@@ -32,15 +32,19 @@ export const useFilterDevices = (filterValue, devicesData, dropdownValue) => {
 		);
 	};
 
-	const dropDownFilter = (dropdownValue, devices) => {
-		if (sortFunctions[dropdownValue]) {
-			return sortFunctions[dropdownValue](devices);
-		}
-		if (dropdownValue === 'ALL') {
-			return devices;
+	const dropDownFilter = (dropdownValue, devices, dropdownKey) => {
+		if (dropdownKey === 'deviceType') {
+			if (dropdownValue === 'ALL') {
+				return devices;
+			}
+			return devices.filter(device => device?.type?.toLowerCase().includes(dropdownValue.toLowerCase()));
 		}
 
-		return devices.filter(device => device?.type?.toLowerCase().includes(dropdownValue.toLowerCase()));
+		if (dropdownKey === 'sortBy' && sortFunctions[dropdownValue]) {
+			return sortFunctions[dropdownValue](devices);
+		}
+
+		return devices;
 	};
 
 	const memoizedFilteredDevices = useMemo(() => {
@@ -56,13 +60,13 @@ export const useFilterDevices = (filterValue, devicesData, dropdownValue) => {
 					filtered = searchFilter(filter.value, filtered);
 				}
 				if (filter.type === 'dropdown') {
-					filtered = dropDownFilter(filter.value, filtered);
+					filtered = dropDownFilter(filter.value, filtered, filter.dropdownKey);
 				}
 			}
 		});
 
 		return filtered;
-	}, [filterValue, devicesData, dropdownValue]);
+	}, [filterValue, devicesData]);
 
 	useEffect(() => {
 		setFilteredDevices(prevState => {

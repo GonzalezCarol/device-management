@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 import {Header} from "../../components/Header";
 import {Table} from "../../components/Table";
 import {BodyContainer, DeviceContainer, Title} from "./styles";

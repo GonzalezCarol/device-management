@@ -3,27 +3,25 @@ import PropTypes from 'prop-types';
 import {ArrowIcon, DropdownContainer, DropdownItem, DropdownMenu, TextField} from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
 
-const Dropdown = ({label, onChange, options}) => {
+export const Dropdown = ({label, onChange, options, selectedValue}) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedType, setSelectedType] = useState('');
 
-	const toggleDropdown = () => setIsOpen((prev) => !prev);
+	const toggleDropdown = () => setIsOpen(prev => !prev);
 
 	const handleSelectOption = (type) => {
-		setSelectedType(type);
-		setIsOpen(false);
 		onChange(type);
+		setIsOpen(false);
 	};
 
 	return (
 		<DropdownContainer>
 			<div style={{position: 'relative'}}>
 				<TextField
-					value={selectedType}
+					value={selectedValue}
 					placeholder={label}
 					onClick={toggleDropdown}
 					readOnly
-					length={selectedType.length || label.length}
+					length={selectedValue?.length || label.length}
 				/>
 				<ArrowIcon src={arrowDown} alt="arrow-down" onClick={toggleDropdown}/>
 			</div>
@@ -43,10 +41,11 @@ const Dropdown = ({label, onChange, options}) => {
 	);
 };
 
+
 Dropdown.propTypes = {
 	label: PropTypes.string.isRequired,
 	onChange: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(PropTypes.string).isRequired,
+	selectedValue: PropTypes.string,
 };
 
-export default Dropdown;

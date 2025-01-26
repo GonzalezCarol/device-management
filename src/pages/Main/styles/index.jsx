@@ -15,4 +15,7 @@ export const Title = styled.span`
 
 export const DeviceContainer = styled.div`
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `

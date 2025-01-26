@@ -1,9 +1,16 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {ArrowIcon, DropdownContainer, DropdownItem, DropdownMenu, TextField} from './styles/index.jsx';
+import {
+	ArrowIcon,
+	DropdownContainer,
+	DropdownItem,
+	DropdownLabelContainer,
+	DropdownMenu,
+	TextField
+} from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
 
-export const Dropdown = ({label, onChange, options, selectedValue}) => {
+export const Dropdown = ({placeholder, label, onChange, options, selectedValue}) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleDropdown = () => setIsOpen(prev => !prev);
@@ -15,16 +22,19 @@ export const Dropdown = ({label, onChange, options, selectedValue}) => {
 
 	return (
 		<DropdownContainer>
-			<div style={{position: 'relative'}}>
+			<DropdownLabelContainer>
+				<span>
+					{label}
+				</span>
 				<TextField
 					value={selectedValue}
-					placeholder={label}
+					placeholder={placeholder}
 					onClick={toggleDropdown}
 					readOnly
-					length={selectedValue?.length || label.length}
+					length={selectedValue?.length || label?.length || placeholder?.length}
 				/>
 				<ArrowIcon src={arrowDown} alt="arrow-down" onClick={toggleDropdown}/>
-			</div>
+			</DropdownLabelContainer>
 
 			<DropdownMenu isOpen={isOpen}>
 				{options?.length === 0 ? (

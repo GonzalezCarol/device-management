@@ -12,7 +12,6 @@ export const TextField = styled.input`
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    color: #211F33;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: ${(props) => `${props.length}ch`};
@@ -20,8 +19,15 @@ export const TextField = styled.input`
     min-width: 150px;
     max-width: 500px;
 
-    &::placeholder {
-        color: #aaa;
+    ::placeholder {
+        color: #211F33;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+
     }
 
     &:focus {
@@ -61,3 +67,9 @@ export const ArrowIcon = styled.img`
     transform: translateY(-50%);
     cursor: pointer;
 `;
+
+export const DropdownLabelContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+`

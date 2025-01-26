@@ -1,4 +1,4 @@
-import ninjaLogo from '../../assets/ninjaone.svg'
+import ninjaLogo from '../../assets/ninja-one.svg'
 import {HeaderContainer, LogoImage} from "./styles";
 
 export const Header = () => (

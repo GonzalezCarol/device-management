@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-export const SearchFilterContainer = styled.div`
-    position: relative;
-    width: 270px;
-`;
-
-export const SearchInput = styled.input`
+export const StyledTextField = styled.input`
     padding: 8px 0 7px 38px;
     width: 230px;
     border: 1px solid #D1D0D9;
@@ -23,14 +18,10 @@ export const SearchInput = styled.input`
     }
 `;
 
-export const SearchIcon = styled.img`
-    padding: 5px;
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 15px;
-    gap: 0px;
-    opacity: 0px;
-`;
 
+export const TextfieldContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    gap: 5px;
+`

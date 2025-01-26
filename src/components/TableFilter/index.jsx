@@ -6,11 +6,12 @@ import {useMainProps} from '../../contexts/MainContext';
 import {OPTIONS_SORT_BY} from '../../consts/index.js';
 import refreshIcon from '../../assets/refresh-icon.svg';
 import {IconButtonComponent} from '../IconButton/index.jsx';
+import {optionsDeviceType} from "../../utils/deviceTypeOptions/index.js";
 
 export const TableFilter = () => {
 	const {devicesData: devices, selectedDropdowns, handleDropdownChange, handleRefreshChange} = useMainProps();
 
-	const optionsDeviceType = devices ? ['ALL', ...new Set(devices.map((device) => device.type))] : [];
+	const options = optionsDeviceType(devices)
 
 	const onChangeDeviceType = (value) => {
 		handleDropdownChange('deviceType', value);
@@ -29,15 +30,15 @@ export const TableFilter = () => {
 			<FilterContainer>
 				<SearchFilter/>
 				<Dropdown
-					label={'Device Type: All'}
+					placeholder={'Device Type: All'}
 					onChange={onChangeDeviceType}
-					options={optionsDeviceType}
+					options={options}
 					dropdownKey="deviceType"
 					selectedValue={selectedDropdowns?.deviceType}
 				/>
 
 				<Dropdown
-					label={'Sort by: HDD Capacity (Descending)'}
+					placeholder={'Sort by: HDD Capacity (Descending)'}
 					onChange={onChangeDeviceCapacityDesc}
 					options={OPTIONS_SORT_BY}
 					dropdownKey="sortBy"

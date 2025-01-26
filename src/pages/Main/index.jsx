@@ -12,6 +12,16 @@ import addIcon from '../../assets/add-icon.svg'
 export const Main = () => {
 	const {filteredDevices: devices} = useMainProps();
 	const [isDeviceModalOpen, setIsDeviceModalOpen] = React.useState(false);
+	const [editDevice, setEditDevice] = useState()
+	const [deleteDevice, setDeleteDevice] = useState()
+
+	const onClickEditDevice = () => {
+		setEditDevice(true)
+	}
+
+	const onClickDeleteDevice = () => {
+		setDeleteDevice(true)
+	}
 
 	return (<>
 		<Header/>
@@ -25,7 +35,7 @@ export const Main = () => {
 					devices={devices}/>
 			</DeviceContainer>
 			<TableFilter/>
-			<Table devices={devices}/>
+			<Table devices={devices} onClickEditDevice={onClickEditDevice} onClickDeleteDevice={onClickDeleteDevice}/>
 		</BodyContainer>
 	</>);
 };

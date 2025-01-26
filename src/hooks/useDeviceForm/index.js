@@ -35,7 +35,7 @@ const validateField = (fieldName, fieldValue) => {
 const validateForm = (formData) => {
 	return Object.keys(formData).reduce((acc, field) => {
 		const error = validateField(field, formData[field]);
-		if (error) acc[field] = error;  // Collect the error for the field
+		if (error) acc[field] = error;
 		return acc;
 	}, {});
 };

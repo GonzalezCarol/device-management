@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-    background: ${(props) => props?.typeColor === 'quiet' ? '#FFF' : '#337AB7'};
+    background: ${(props) => props?.backGroundColor || (props?.typeColor === 'quiet' ? '#FFF' : '#337AB7')};
     color: ${(props) => props?.typeColor === 'quiet' ? '#337AB7' : '#FFF'};
     border: none;
     border-radius: 4px;
@@ -17,18 +17,15 @@ export const StyledButton = styled.button`
     border-radius: 4px;
 
     &:hover {
-      cursor: pointer;
+        cursor: pointer;
     }
 
     & > span {
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 14px;
-      text-align: left;
-      text-underline-position: from-font;
-      text-decoration-skip-ink: none;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 14px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
     }
-  `
-
-
-;
+`;

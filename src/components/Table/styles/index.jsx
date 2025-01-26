@@ -25,10 +25,24 @@ export const TableRow = styled.tr`
     align-content: center;
     border-bottom: 1px solid #ddd;
 
+    .button-container {
+        visibility: hidden; /* Initially hide the button */
+        opacity: 0; /* Initially hide the button */
+        transition: opacity 0.3s, visibility 0s 0.3s;
+    }
+
     &:hover {
+        .button-container {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s, visibility 0s;
+        }
+
         background-color: ${(props) => props.color || '#FFF'};
     }
+
 `;
+
 
 export const TableCell = styled.td`
     padding: 5px;
@@ -48,7 +62,7 @@ export const TableContainer = styled.div`
     width: 100%;
     margin: auto;
     overflow: hidden;
-		padding: 10px 0;
+    padding: 10px 0;
 `;
 
 export const Icon = styled.img`
@@ -56,7 +70,15 @@ export const Icon = styled.img`
     height: 16px;
     padding: 0 8px 0;
     gap: 8px;
+    background-color: ${(props) => props?.hoverColor ? props.hoverColor : 'none'};
+    background-color: ${(props) => props?.hoverColor ? props.hoverColor : 'none'};
 `
 export const Subtitle = styled.span`
     padding: 0 8px 4px;
+`
+
+export const TableCellContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `

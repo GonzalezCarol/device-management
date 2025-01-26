@@ -1,6 +1,6 @@
 import {StyledButton} from "./styles/index.jsx";
 
-export const Button = ({label, onClick, icon, width, height, typeColor}) => {
+export const Button = ({label, onClick, icon, width, height, typeColor, backGroundColor}) => {
 
 	return (
 		<StyledButton
@@ -9,8 +9,11 @@ export const Button = ({label, onClick, icon, width, height, typeColor}) => {
 			width={width}
 			height={height}
 			typeColor={typeColor}
+			backGroundColor={backGroundColor}
 		>
-			<span>{label}</span>
+			{label && (
+				<span>{label}</span>
+			)}
 			{icon && (
 				<img src={icon}/>
 			)}

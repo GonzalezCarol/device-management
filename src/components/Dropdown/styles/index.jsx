@@ -7,7 +7,6 @@ export const DropdownContainer = styled.div`
 
 export const TextField = styled.input`
     padding: 10px;
-    padding-right: 30px;
     border: 1px solid #ddd;
     font-size: 16px;
     border-radius: 5px;

@@ -22,18 +22,8 @@ export const ModalContainer = styled.div`
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
-export const CloseButton = styled.button`
-    background: #ff5c5c;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
+export const CloseButton = styled.img`
     cursor: pointer;
-    margin-top: 20px;
-
-    &:hover {
-        background: #ff3b3b;
-    }
 `;
 
 export const ModalTitle = styled.div`
@@ -45,3 +35,8 @@ export const ModalTitle = styled.div`
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
 `
+export const TitleContainer = styled.div`
+    display: flex;
+    align-items: self-start;
+    justify-content: space-between;
+	`

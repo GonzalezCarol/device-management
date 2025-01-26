@@ -16,7 +16,7 @@ export const DeviceModal = ({isDeviceModalOpen, onClose, devices}) => {
 		clearForm,
 		setFormErrors
 	} = useDeviceForm()
-	const options = optionsDeviceType(devices);
+	const options = optionsDeviceType(devices).filter(value => value !== 'ALL');
 
 	const formErrorInitialStatue = {
 		system_name: '',

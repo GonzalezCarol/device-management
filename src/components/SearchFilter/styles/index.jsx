@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const SearchFilterContainer = styled.div`
     position: relative;
     width: 270px;
+    align-content: center;
 `;
 
 export const SearchInput = styled.input`

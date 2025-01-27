@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import {SuspendButton, SuspendMenu} from "./styles/index.jsx";
 
 export const SuspendedMenu = ({options, device, onClick}) => {

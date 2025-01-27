@@ -12,7 +12,6 @@ import {SuspendedMenu} from "../SuspendedMenu/index.jsx";
 
 export const Table = ({showMenu, setShowMenu, handleOnClickSuspendedMenu}) => {
 	const {filteredDevices: devices} = useMainProps();
-	const buttonRef = useRef(null);
 
 	const handleClickButton = (e, deviceId) => {
 		if (e) {
@@ -28,55 +27,53 @@ export const Table = ({showMenu, setShowMenu, handleOnClickSuspendedMenu}) => {
 		id: 2, name: "Delete", color: "#D53948",
 	},];
 
-	return (<TableContainer>
-		<StyledTable>
-			<thead>
-			<TableRow>
-				<TableHeader>Device</TableHeader>
-			</TableRow>
-			</thead>
-			<tbody>
-			{devices?.map((device) => (<TableRow key={device?.id} color={"#f1f1f1"}>
-				<TableCellContainer>
-					<div>
-						<TableCell>
-							<Icon src={deviceIcon[device?.type]}/>
-							{device?.system_name}
-						</TableCell>
-						<TableCell color={"#6E6D7A"}>
-							<Subtitle>
-								{capitalizeFirstLetter(device?.type)} Workstation -{" "}
-								{device?.hdd_capacity} GB
-							</Subtitle>
-						</TableCell>
-					</div>
-					<TableCell style={{position: "relative"}}>
-						<Button
-							ref={buttonRef}
-							width={32}
-							height={32}
-							backGroundColor={"#E8E8EA"}
-							icon={dotIcon}
-							onClick={(e) => handleClickButton(e, device?.id)}
-						/>
-						{showMenu === device?.id && (
-							<SuspendedMenu
-								device={device}
-								onClick={handleOnClickSuspendedMenu}
-								options={options}
+	return (
+		<TableContainer>
+			<StyledTable>
+				<thead>
+				<TableRow>
+					<TableHeader>Device</TableHeader>
+				</TableRow>
+				</thead>
+				<tbody>
+				{devices?.map((device) => (<TableRow key={device?.id} color={"#f1f1f1"}>
+					<TableCellContainer>
+						<div>
+							<TableCell>
+								<Icon src={deviceIcon[device?.type]}/>
+								{device?.system_name}
+							</TableCell>
+							<TableCell color={"#6E6D7A"}>
+								<Subtitle>
+									{capitalizeFirstLetter(device?.type)} Workstation - {device?.hdd_capacity} GB
+								</Subtitle>
+							</TableCell>
+						</div>
+						<div style={{position: "relative"}}>
+							<Button
+								width={32}
+								height={32}
+								backGroundColor={"#E8E8EA"}
+								icon={dotIcon}
+								onClick={(e) => handleClickButton(e, device?.id)}
 							/>
-						)}
-					</TableCell>
-				</TableCellContainer>
-			</TableRow>))}
-			</tbody>
-		</StyledTable>
-	</TableContainer>);
+							{showMenu === device?.id && (
+								<SuspendedMenu
+									device={device}
+									onClick={handleOnClickSuspendedMenu}
+									options={options}
+								/>
+							)}
+						</div>
+					</TableCellContainer>
+				</TableRow>))}
+				</tbody>
+			</StyledTable>
+		</TableContainer>);
 };
 
-
 Table.propTypes = {
-	showMenu: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.null]),
+	showMenu: PropTypes.bool,
 	setShowMenu: PropTypes.func.isRequired,
 	handleOnClickSuspendedMenu: PropTypes.func.isRequired,
 };

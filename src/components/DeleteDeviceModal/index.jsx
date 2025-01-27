@@ -30,10 +30,10 @@ export const DeleteDeviceModal = ({isDeviceDeleModalOpen, onClose, deviceInfo}) 
 };
 
 DeleteDeviceModal.propTypes = {
-	isDeviceDeleModalOpen: PropTypes.bool.isRequired,
-	onClose: PropTypes.func.isRequired,
+	isDeviceDeleModalOpen: PropTypes.bool,
+	onClose: PropTypes.func,
 	deviceInfo: PropTypes.shape({
-		deviceId: PropTypes.string.isRequired,
-		deviceName: PropTypes.string.isRequired,
-	}).isRequired,
+		deviceId: PropTypes.string,
+		deviceName: PropTypes.string,
+	}),
 };

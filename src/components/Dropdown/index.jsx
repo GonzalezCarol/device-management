@@ -55,11 +55,11 @@ export const Dropdown = ({placeholder, label, onChange, options, selectedValue, 
 
 Dropdown.propTypes = {
 	placeholder: PropTypes.string,
-	label: PropTypes.string.isRequired,
-	onChange: PropTypes.func.isRequired,
-	options: PropTypes.arrayOf(PropTypes.string).isRequired,
+	label: PropTypes.string,
+	onChange: PropTypes.func,
+	options: PropTypes.arrayOf(PropTypes.string),
 	selectedValue: PropTypes.string,
 	name: PropTypes.string,
-	width: PropTypes.string,
-	top: PropTypes.string
+	width: PropTypes.number,
+	top: PropTypes.number
 };

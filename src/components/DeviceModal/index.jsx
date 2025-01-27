@@ -58,8 +58,8 @@ export const DeviceModal = ({isDeviceModalOpen, onClose, devices, deviceId}) => 
 };
 
 DeviceModal.propTypes = {
-	isDeviceModalOpen: PropTypes.bool.isRequired,
-	onClose: PropTypes.func.isRequired,
-	devices: PropTypes.array.isRequired,
-	deviceId: PropTypes.string.isRequired,
+	isDeviceModalOpen: PropTypes.bool,
+	onClose: PropTypes.func,
+	devices: PropTypes.array,
+	deviceId: PropTypes.string,
 };

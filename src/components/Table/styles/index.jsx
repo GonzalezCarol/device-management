@@ -26,8 +26,8 @@ export const TableRow = styled.tr`
     border-bottom: 1px solid #ddd;
 
     .button-container {
-        visibility: hidden; /* Initially hide the button */
-        opacity: 0; /* Initially hide the button */
+        visibility: hidden;
+        opacity: 0;
         transition: opacity 0.3s, visibility 0s 0.3s;
     }
 
@@ -77,7 +77,7 @@ export const Subtitle = styled.span`
     padding: 0 8px 4px;
 `
 
-export const TableCellContainer = styled.div`
+export const TableCellContainer = styled.th`
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -39,7 +39,7 @@ export const DeviceForm = (
 	</SpanContainer>
 	<SpanContainer>
 		<Textfield
-			type="text"
+			type="number"
 			label="HDD capacity (GB)"
 			onChange={onChangeTextField}
 			value={formData.hdd_capacity}
@@ -52,17 +52,12 @@ export const DeviceForm = (
 
 DeviceForm.propTypes = {
 	formData: PropTypes.shape({
-		system_name: PropTypes.string.isRequired,
-		type: PropTypes.string.isRequired,
-		hdd_capacity: PropTypes.string.isRequired,
-	}).isRequired,
-	options: PropTypes.arrayOf(PropTypes.shape({
-		label: PropTypes.string.isRequired, value: PropTypes.string.isRequired,
-	})).isRequired,
+		system_name: PropTypes.string, type: PropTypes.string, hdd_capacity: PropTypes.string,
+	}),
+	options: PropTypes.array,
 	onChangeTextField: PropTypes.func.isRequired,
 	onChangeDropdown: PropTypes.func.isRequired,
 	formErrors: PropTypes.shape({
 		system_name: PropTypes.string, type: PropTypes.string, hdd_capacity: PropTypes.string,
 	}).isRequired,
 };
-

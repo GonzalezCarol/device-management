@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SuspendMenu = styled.div`
+export const SuspendMenu = styled.td`
     width: 120px;
     height: 72px;
     position: absolute;

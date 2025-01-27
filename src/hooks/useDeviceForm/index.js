@@ -6,12 +6,11 @@ import {validateForm} from "../useValidateForm/index.jsx";
 
 export const useDeviceForm = (deviceId = null) => {
 		const [formErrors, setFormErrors] = React.useState({
-				system_name: '',
-				type: '',
-				hdd_capacity: '',
-			})
+			system_name: '',
+			type: '',
+			hdd_capacity: '',
+		});
 
-		;
 		const {data: deviceDetail} = useDeviceDetail(deviceId || '', {enabled: !!deviceId});
 
 		const {mutateAsync: updateDevice} = useDeviceUpdate();

@@ -12,10 +12,10 @@ export const IconButtonComponent = ({label, icon, onClick}) => {
 };
 
 IconButtonComponent.propTypes = {
-	label: PropTypes.string.isRequired,
+	label: PropTypes.string,
 	icon: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.node
 	]),
-	onClick: PropTypes.func.isRequired,
+	onClick: PropTypes.func,
 };

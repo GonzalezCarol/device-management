@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {useCreateDevice} from "../apiHooks/useCreateDevice/index.js";
-// import {useDeviceDetail} from '../useDeviceDetail';
-// import {useDeviceUpdate} from '../useDeviceUpdate';
-// import {useCreateDevice} from '../useCreateDevice';
-
+import {useDeviceDetail} from "../apiHooks/useDeviceDetail/index.jsx";
+import {useDeviceUpdate} from "../apiHooks/useDeviceUpdate/index.jsx";
 
 const validationRules = {
 	system_name: {
@@ -49,9 +47,9 @@ export const useDeviceForm = (deviceId = null) => {
 			})
 
 		;
-		// const {data: deviceDetail} = useDeviceDetail(deviceId || '', {enabled: !!deviceId});
+		const {data: deviceDetail} = useDeviceDetail(deviceId || '', {enabled: !!deviceId});
 
-		// const {mutateAsync: updateDevice} = useDeviceUpdate();
+		const {mutateAsync: updateDevice} = useDeviceUpdate();
 		const {mutateAsync: createDevice} = useCreateDevice();
 
 		const [formData, setFormData] = useState({
@@ -94,7 +92,7 @@ export const useDeviceForm = (deviceId = null) => {
 
 		const mutateDevice = async () => {
 			if (deviceId) {
-				// return await updateDevice({id: deviceId, ...formData});
+				return await updateDevice({id: deviceId, ...formData});
 			} else {
 				return await createDevice(formData);
 			}
@@ -118,15 +116,15 @@ export const useDeviceForm = (deviceId = null) => {
 			}
 		};
 
-// React.useEffect(() => {
-// 	if (deviceDetail) {
-// 		setFormData({
-// 			system_name: deviceDetail.system_name,
-// 			type: deviceDetail.type,
-// 			hdd_capacity: String(deviceDetail.hdd_capacity),
-// 		});
-// 	}
-// }, [deviceDetail]);
+		React.useEffect(() => {
+			if (deviceDetail) {
+				setFormData({
+					system_name: deviceDetail.system_name,
+					type: deviceDetail.type,
+					hdd_capacity: String(deviceDetail.hdd_capacity),
+				});
+			}
+		}, [deviceDetail]);
 
 		return {
 			formData,

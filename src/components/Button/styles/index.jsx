@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
-    background: ${(props) => props?.backGroundColor || (props?.typeColor === 'quiet' ? '#FFF' : '#337AB7')};
-    color: ${(props) => props?.typeColor === 'quiet' ? '#337AB7' : '#FFF'};
+    background: ${(props) =>
+            props?.backGroundColor ||
+            (props?.typeColor === 'quiet' ? '#FFF' : (props?.typeColor === 'delete' ? '#D53948' : '#337AB7'))
+    };
+    color: ${(props) => props?.color || (props?.typeColor === 'quiet' ? '#337AB7' : '#FFF')};
     border: none;
     border-radius: 4px;
     border: ${(props) => props?.typeColor === 'quiet' ? '1px solid #48446940' : 'none'};

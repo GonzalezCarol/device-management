@@ -7,7 +7,7 @@ export const SuspendedMenu = ({options, device, onClick}) => {
 		<SuspendMenu>
 			{
 				options.map((value) => (
-					<div key={value.id} onClick={() => onClick(device?.id, value.name)}>
+					<div key={value.id} onClick={() => onClick(device?.id, value.name, device?.system_name)}>
 						<SuspendButton color={value?.color}>{value.name}</SuspendButton>
 					</div>
 				))}
@@ -25,6 +25,7 @@ SuspendedMenu.propTypes = {
 	).isRequired,
 	device: PropTypes.shape({
 		id: PropTypes.string.isRequired,
+		system_name: PropTypes.string.isRequired,
 	}).isRequired,
 	onClick: PropTypes.func.isRequired,
 };

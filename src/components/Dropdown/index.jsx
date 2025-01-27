@@ -26,9 +26,7 @@ export const Dropdown = ({placeholder, label, onChange, options, selectedValue, 
 	return (
 		<DropdownContainer>
 			<DropdownLabelContainer>
-				<span>
-					{label}
-				</span>
+				<span>{label}</span>
 				<TextField
 					value={selectedValue}
 					placeholder={placeholder}
@@ -55,14 +53,13 @@ export const Dropdown = ({placeholder, label, onChange, options, selectedValue, 
 	);
 };
 
-
 Dropdown.propTypes = {
+	placeholder: PropTypes.string,
 	label: PropTypes.string.isRequired,
-	onChange:
-	PropTypes.func.isRequired,
-	options:
-	PropTypes.arrayOf(PropTypes.string).isRequired,
-	selectedValue:
-	PropTypes.string,
+	onChange: PropTypes.func.isRequired,
+	options: PropTypes.arrayOf(PropTypes.string).isRequired,
+	selectedValue: PropTypes.string,
+	name: PropTypes.string,
+	width: PropTypes.string,
+	top: PropTypes.string
 };
-

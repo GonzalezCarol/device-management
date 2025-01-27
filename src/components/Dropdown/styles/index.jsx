@@ -13,7 +13,7 @@ export const TextField = styled.input`
     cursor: pointer;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: ${(props) => props?.width || `${props.length}ch`};
+    width: ${(props) => props?.width || `${props.length + 2}ch`};
     min-width: 150px;
     max-width: 500px;
 

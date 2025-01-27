@@ -84,8 +84,7 @@ are running, the application should be fully functional.
 ---
 
 ## Demo
-https://github.com/user-attachments/assets/3eb1b0f9-6de4-4b85-adf4-589af8d7f2f8
-
+https://github.com/user-attachments/assets/8c859844-6b05-445b-a50d-a0cb4cf49cb7
 
 ## Tests
 

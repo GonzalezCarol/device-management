@@ -16,12 +16,21 @@ const sortNameDescending = (devices) => {
 	return [...devices].sort((a, b) => b.system_name.localeCompare(a.system_name));
 };
 
-
 const sortFunctions = {
 	'HDD Capacity (Ascending)': sortHDDCapacityAscending,
 	'HDD Capacity (Descending)': sortHDDCapacityDescending,
 	'Name (Ascending)': sortNameAscending,
 	'Name (Descending)': sortNameDescending
+};
+
+const dropDownFilterMultiple = (devices, value) => {
+	if (value) {
+		return devices.filter(device => {
+			const selectedTypes = value.map(type => type.trim().toUpperCase());
+			return selectedTypes.includes(device?.type?.toUpperCase());
+		});
+	}
+	return devices;
 };
 
 export const useDevicesFilter = (filterValue, devicesData) => {
@@ -37,6 +46,9 @@ export const useDevicesFilter = (filterValue, devicesData) => {
 		if (dropdownKey === 'deviceType') {
 			if (dropdownValue === 'ALL') {
 				return devices;
+			}
+			if (Array.isArray(dropdownValue)) {
+				return devices.filter(device => dropdownValue.includes(device?.type));
 			}
 			return devices.filter(device => device?.type?.toLowerCase().includes(dropdownValue.toLowerCase()));
 		}
@@ -62,6 +74,9 @@ export const useDevicesFilter = (filterValue, devicesData) => {
 				}
 				if (filter.type === 'dropdown') {
 					filtered = dropDownFilter(filter.value, filtered, filter.dropdownKey);
+				}
+				if (filter.type === 'dropdownMultiple') {
+					filtered = dropDownFilterMultiple(filtered, filter.value);
 				}
 			}
 		});

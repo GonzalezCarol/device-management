@@ -2,6 +2,7 @@ import React from 'react';
 import {FilterContainer, TableFilterContainer} from './styles';
 import {SearchFilter} from '../SearchFilter';
 import {Dropdown} from '../Dropdown';
+import {DropdownMultiple} from '../DropdownMultiple';
 import {useMainProps} from '../../contexts/MainContext';
 import {OPTIONS_SORT_BY} from '../../consts/index.js';
 import refreshIcon from '../../assets/refresh-icon.svg';
@@ -9,13 +10,13 @@ import {IconButtonComponent} from '../IconButton/index.jsx';
 import {optionsDeviceType} from "../../utils/deviceTypeOptions/index.js";
 
 export const TableFilter = () => {
-	const {devicesData: devices, selectedDropdowns, handleDropdownChange, handleRefreshChange} = useMainProps();
+	const {
+		devicesData: devices, selectedDropdowns, handleDropdownChange, handleRefreshChange,
+		selectedDropdownsMultiple,
+		handleDropdownChangeMultiple
+	} = useMainProps();
 
 	const options = optionsDeviceType(devices);
-
-	const onChangeDeviceType = (value) => {
-		handleDropdownChange('deviceType', value);
-	};
 
 	const onChangeDeviceCapacityDesc = (value) => {
 		handleDropdownChange('sortBy', value);
@@ -29,12 +30,12 @@ export const TableFilter = () => {
 		<TableFilterContainer>
 			<FilterContainer>
 				<SearchFilter/>
-				<Dropdown
+				<DropdownMultiple
 					placeholder={'Device Type: All'}
-					onChange={onChangeDeviceType}
+					onChange={handleDropdownChangeMultiple}
 					options={options}
 					dropdownKey="deviceType"
-					selectedValue={selectedDropdowns?.deviceType.type}
+					selectedValue={selectedDropdownsMultiple || []}
 				/>
 
 				<Dropdown

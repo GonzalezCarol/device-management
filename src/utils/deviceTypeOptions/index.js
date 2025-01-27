@@ -1,1 +1,1 @@
-export const optionsDeviceType = (devices) => devices ? ['ALL', ...new Set(devices.map((device) => device.type))] : [];
+export const optionsDeviceType = (devices) => devices ? [...new Set(devices.map((device) => device.type))] : [];

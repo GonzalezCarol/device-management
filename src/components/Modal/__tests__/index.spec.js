@@ -33,7 +33,7 @@ describe('Modal', () => {
 
 	it('should call onClose when the overlay is clicked', () => {
 		render(<Modal {...defaultProps} />);
-		fireEvent.click(screen.getByRole('img')); // ModalOverlay has role dialog
+		fireEvent.click(screen.getByRole('img'));
 		expect(mockOnClose).toHaveBeenCalledTimes(1);
 	});
 

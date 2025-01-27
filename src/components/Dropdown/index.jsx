@@ -30,8 +30,9 @@ export const Dropdown = ({id, placeholder, label, onChange, options, selectedVal
 				<TextField
 					id={id}
 					data-testid={name}
-					value={selectedValue}
+					value={selectedValue || placeholder}
 					placeholder={placeholder}
+					label={placeholder}
 					onClick={toggleDropdown}
 					readOnly
 					length={selectedValue?.length || label?.length || placeholder?.length}

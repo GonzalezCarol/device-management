@@ -4,11 +4,12 @@ import {useRefreshFilter} from '../index.js';
 describe('useRefreshFilter Hook', () => {
 	let handleSearchChange;
 	let handleDropdownChange;
+	let handleDropdownChangeMultiple;
 
 	beforeEach(() => {
-
 		handleSearchChange = jest.fn();
 		handleDropdownChange = jest.fn();
+		handleDropdownChangeMultiple = jest.fn();
 	});
 
 	test('should return initial refreshFilters as false', () => {
@@ -21,7 +22,7 @@ describe('useRefreshFilter Hook', () => {
 
 	test('should call handleSearchChange and handleDropdownChange when refreshFilters is set to true', () => {
 		const {result} = renderHook(() =>
-			useRefreshFilter(handleSearchChange, handleDropdownChange)
+			useRefreshFilter(handleSearchChange, handleDropdownChange, handleDropdownChangeMultiple)
 		);
 
 		act(() => {
@@ -59,7 +60,7 @@ describe('useRefreshFilter Hook', () => {
 
 	test('should reset filters correctly on multiple calls', () => {
 		const {result} = renderHook(() =>
-			useRefreshFilter(handleSearchChange, handleDropdownChange)
+			useRefreshFilter(handleSearchChange, handleDropdownChange, handleDropdownChangeMultiple)
 		);
 
 		act(() => {

@@ -5,6 +5,7 @@ import {useDevicesFilter} from "../../hooks/useDevicesFilter";
 import {useGetDevices} from "../../hooks/apiHooks/useGetDevices";
 import {useRefreshFilter} from "../../hooks/useRefreshFilter/index.js";
 import {useDropdown} from "../../hooks/useDropdown/index.js";
+import {useDropdownMultiple} from "../../hooks/useDropdownMultiple/index.js";
 
 const MainContext = createContext();
 
@@ -14,22 +15,33 @@ export const MainProvider = ({children}) => {
 	const {data: devicesData, isLoading} = useGetDevices();
 	const {searchValue, handleSearchChange} = useSearch();
 	const {selectedDropdowns, handleDropdownChange} = useDropdown();
-	const {refreshFilters, handleRefreshChange} = useRefreshFilter(handleSearchChange, handleDropdownChange);
+	const {selectedDropdownsMultiple, handleDropdownChangeMultiple} = useDropdownMultiple();
+	const {
+		refreshFilters,
+		handleRefreshChange
+	} = useRefreshFilter(handleSearchChange, handleDropdownChange, handleDropdownChangeMultiple);
 
 	const filter = useMemo(() => {
-		if (!selectedDropdowns) return;
+		if (!selectedDropdowns && !selectedDropdownsMultiple) return;
+
 		const dropdownFilters = Object.keys(selectedDropdowns).map(key => ({
 			type: 'dropdown',
 			value: selectedDropdowns[key].type,
 			dropdownKey: key
 		}));
 
+		const dropdownMultipleFilters = selectedDropdownsMultiple?.map(key => ({
+			type: 'dropdownMultiple',
+			value: key
+		}));
+
 		const textFieldFilter = [
 			{type: 'textfield', value: searchValue},
 		];
 
-		return [...dropdownFilters, ...textFieldFilter];
-	}, [selectedDropdowns, searchValue]);
+		return [...dropdownFilters, ...dropdownMultipleFilters, ...textFieldFilter];
+	}, [selectedDropdowns, selectedDropdownsMultiple, searchValue]);
+
 
 	const {filteredDevices} = useDevicesFilter(filter, devicesData);
 
@@ -42,6 +54,8 @@ export const MainProvider = ({children}) => {
 		handleDropdownChange,
 		isLoading,
 		handleRefreshChange,
+		selectedDropdownsMultiple,
+		handleDropdownChangeMultiple
 	}), [
 		searchValue,
 		selectedDropdowns,
@@ -50,6 +64,8 @@ export const MainProvider = ({children}) => {
 		isLoading,
 		refreshFilters,
 		handleRefreshChange,
+		selectedDropdownsMultiple,
+		handleDropdownChangeMultiple
 	]);
 
 	return (

@@ -49,7 +49,7 @@ export const Table = ({showMenu, setShowMenu, handleOnClickSuspendedMenu}) => {
 								</Subtitle>
 							</TableCell>
 						</div>
-						<div style={{position: "relative"}}>
+						<div className="button-container" style={{position: "relative"}}>
 							<Button
 								width={32}
 								height={32}

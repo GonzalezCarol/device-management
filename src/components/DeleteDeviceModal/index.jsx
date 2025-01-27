@@ -2,7 +2,7 @@ import React from "react";
 import {Modal} from "../Modal/index.jsx";
 import {Button} from "../Button/index.jsx";
 import {ButtonContainer} from "./styles/index.jsx";
-import {useDeleteDevice} from "../../hooks/apiHooks/useDeleteDevice/index.jsx";
+import {useDeleteDevice} from "../../hooks/apiHooks/useDeleteDevice/index.js";
 import PropTypes from "prop-types";
 
 export const DeleteDeviceModal = ({isDeviceDeleModalOpen, onClose, deviceInfo}) => {

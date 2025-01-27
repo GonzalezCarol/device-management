@@ -1,16 +1,15 @@
 import {useMutation, useQueryClient} from '@tanstack/react-query';
+import axios from 'axios';
 import {API_URL} from '../../../consts';
 
 const updateDevice = async (device) => {
 	const url = `${API_URL}/devices/${device.id}`;
 
-	const response = await fetch(url, {
-		method: 'PUT',
+	const response = await axios.put(url, device, {
 		headers: {'Content-Type': 'application/json'},
-		body: JSON.stringify(device),
 	});
 
-	return response.json();
+	return response.data;
 };
 
 export const useDeviceUpdate = () => {

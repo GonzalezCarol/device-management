@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useCreateDevice} from "../apiHooks/useCreateDevice/index.js";
-import {useDeviceDetail} from "../apiHooks/useDeviceDetail/index.jsx";
-import {useDeviceUpdate} from "../apiHooks/useDeviceUpdate/index.jsx";
+import {useDeviceDetail} from "../apiHooks/useDeviceDetail/index.js";
+import {useDeviceUpdate} from "../apiHooks/useDeviceUpdate/index.js";
 import {validateForm} from "../useValidateForm/index.jsx";
 
 export const useDeviceForm = (deviceId = null) => {
@@ -63,7 +63,7 @@ export const useDeviceForm = (deviceId = null) => {
 		};
 
 		const handleSubmit = async () => {
-			const errors = validateForm(formData);
+			const errors = validateForm(formData) || {};
 
 			const hasErrors = Object.values(errors).some((error) => error.length > 0);
 

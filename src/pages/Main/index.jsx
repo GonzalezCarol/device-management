@@ -10,7 +10,7 @@ import addIcon from "../../assets/add-icon.svg";
 import {DeleteDeviceModal} from "../../components/DeleteDeviceModal/index.jsx";
 
 export const Main = () => {
-	const {filteredDevices: devices} = useMainProps();
+	const {devicesData: devices} = useMainProps();
 	const [isDeviceModalOpen, setIsDeviceModalOpen] = useState(false);
 	const [isDeviceDeleteModalOpen, setIsDeviceDeleModalOpen] = useState(false);
 	const [deviceId, setDeviceId] = useState(null)

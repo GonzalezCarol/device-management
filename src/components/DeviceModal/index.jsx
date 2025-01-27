@@ -7,7 +7,7 @@ import {useDeviceForm} from "../../hooks/useDeviceForm/index.js";
 import {Button} from "../Button/index.jsx";
 import {ButtonContainer} from "./styles/index.jsx";
 
-export const DeviceModal = ({isDeviceModalOpen, onClose, devices, deviceId}) => {
+export const DeviceModal = ({isDeviceModalOpen, onClose, devices, deviceId, setDeviceId}) => {
 	const {
 		formData,
 		onChangeTextField,
@@ -30,6 +30,8 @@ export const DeviceModal = ({isDeviceModalOpen, onClose, devices, deviceId}) => 
 		if (!deviceId) {
 			clearForm();
 		}
+		setDeviceId(null)
+		clearForm();
 		setFormErrors(formErrorInitialStatue);
 		onClose();
 	};
@@ -63,6 +65,7 @@ export const DeviceModal = ({isDeviceModalOpen, onClose, devices, deviceId}) => 
 DeviceModal.propTypes = {
 	isDeviceModalOpen: PropTypes.bool,
 	onClose: PropTypes.func,
+	setDeviceId: PropTypes.func,
 	devices: PropTypes.array,
 	deviceId: PropTypes.string,
 };

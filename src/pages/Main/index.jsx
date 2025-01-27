@@ -71,6 +71,7 @@ export const Main = () => {
 					onClose={() => setIsDeviceModalOpen(false)}
 					devices={devices}
 					deviceId={deviceId}
+					setDeviceId={setDeviceId}
 				/>
 				<DeleteDeviceModal
 					deviceInfo={deviceInfo}

@@ -13,7 +13,7 @@ describe('DropdownMultiple Component', () => {
 		label: 'Select Options',
 		placeholder: 'Select...',
 		onChange: handleChange,
-		options: ['MAC', 'LINUX', 'WINDOWS'],
+		options: ['Mac', 'Linux', 'Windows'],
 		selectedValue: [],
 		name: 'deviceType',
 		width: 200,
@@ -31,18 +31,18 @@ describe('DropdownMultiple Component', () => {
 		expect(label).toBeInTheDocument();
 		expect(textField).toBeInTheDocument();
 		fireEvent.click(textField);
-		expect(screen.getByText('MAC')).toBeInTheDocument();
-		expect(screen.getByText('LINUX')).toBeInTheDocument();
-		expect(screen.getByText('WINDOWS')).toBeInTheDocument();
+		expect(screen.getByText('Mac')).toBeInTheDocument();
+		expect(screen.getByText('Linux')).toBeInTheDocument();
+		expect(screen.getByText('Windows')).toBeInTheDocument();
 	});
 
 	it('should handle selecting and deselecting options', () => {
 		render(<DropdownMultiple {...defaultProps} />);
 		const textField = screen.getByPlaceholderText('Select...');
 		fireEvent.click(textField);
-		const macOption = screen.getByText('MAC');
+		const macOption = screen.getByText('Mac');
 		fireEvent.click(macOption);
-		expect(handleChange).toHaveBeenCalledWith(['MAC'], 'deviceType');
+		expect(handleChange).toHaveBeenCalledWith(['Mac'], 'deviceType');
 		fireEvent.click(macOption);
 		expect(handleChange).toHaveBeenCalledWith([], 'deviceType');
 	});
@@ -51,12 +51,12 @@ describe('DropdownMultiple Component', () => {
 		render(<DropdownMultiple {...defaultProps} />);
 		const textField = screen.getByPlaceholderText('Select...');
 		fireEvent.click(textField);
-		const macOption = screen.getByText('MAC');
-		const linuxOption = screen.getByText('LINUX');
+		const macOption = screen.getByText('Mac');
+		const linuxOption = screen.getByText('Linux');
 		fireEvent.click(macOption);
 		fireEvent.click(linuxOption);
-		expect(handleChange).toHaveBeenCalledWith(['MAC', 'LINUX'], 'deviceType');
+		expect(handleChange).toHaveBeenCalledWith(['Mac', 'Linux'], 'deviceType');
 		fireEvent.click(macOption);
-		expect(handleChange).toHaveBeenCalledWith(['LINUX'], 'deviceType');
+		expect(handleChange).toHaveBeenCalledWith(['Linux'], 'deviceType');
 	});
 });

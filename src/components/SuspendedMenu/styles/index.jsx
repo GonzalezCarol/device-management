@@ -12,9 +12,9 @@ export const SuspendMenu = styled.td`
     background-color: #fff;
     border: 1px solid #ccc;
     transition: opacity 0.3s ease-in-out;
-    z-index: 10;
+    z-index: 999;
     box-shadow: 0px 2px 4px 0px #211F3326;
-
+		min-height: 72px;
 `;
 
 export const SuspendButton = styled.div`

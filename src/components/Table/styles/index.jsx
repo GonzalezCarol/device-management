@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const StyledTable = styled.table`
     width: 100%;
+    height: 100vh;
 `;
 export const TableHeader = styled.th`
     padding: 0 12px 5px;

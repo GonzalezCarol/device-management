@@ -24,7 +24,7 @@ export const Table = ({showMenu, setShowMenu, handleOnClickSuspendedMenu}) => {
 	const options = [{
 		id: 1, name: "Edit",
 	}, {
-		id: 2, name: "Delete", color: "#D53948",
+		id: 2, name: "Delete",   color: "#D53948",
 	},];
 
 	return (
@@ -50,7 +50,7 @@ export const Table = ({showMenu, setShowMenu, handleOnClickSuspendedMenu}) => {
 							</TableCell>
 						</div>
 						<div className="button-container" style={{position: "relative"}}>
-							<Button
+						<Button
 								width={32}
 								height={32}
 								backGroundColor={"#E8E8EA"}

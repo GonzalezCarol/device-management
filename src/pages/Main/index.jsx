@@ -12,7 +12,7 @@ import {DeleteDeviceModal} from "../../components/DeleteDeviceModal/index.jsx";
 export const Main = () => {
 	const {filteredDevices: devices} = useMainProps();
 	const [isDeviceModalOpen, setIsDeviceModalOpen] = useState(false);
-	const [isDeviceDeleModalOpen, setIsDeviceDeleModalOpen] = useState(false);
+	const [isDeviceDeleteModalOpen, setIsDeviceDeleModalOpen] = useState(false);
 	const [deviceId, setDeviceId] = useState(null)
 	const [showMenu, setShowMenu] = useState(null);
 	const [deviceInfo, setDeviceInfo] = useState(null);
@@ -75,7 +75,7 @@ export const Main = () => {
 				<DeleteDeviceModal
 					deviceInfo={deviceInfo}
 					onClose={() => setIsDeviceDeleModalOpen(false)}
-					isDeviceDeleModalOpen={isDeviceDeleModalOpen}
+					isDeviceDeleModalOpen={isDeviceDeleteModalOpen}
 				/>
 			</BodyContainer>
 		</>

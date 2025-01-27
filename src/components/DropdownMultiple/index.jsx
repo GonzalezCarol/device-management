@@ -2,13 +2,14 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
 	ArrowIcon,
-	DropdownContainer,
+	DropdownContainer, DropdownInput,
 	DropdownItem,
 	DropdownLabelContainer,
-	DropdownMenu,
+	DropdownMenu, DropdownSpan,
 	TextField,
 } from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
+import {capitalizeFirstLetter} from "../../utils/capitalizeFirstLetter/index.js";
 
 export const DropdownMultiple = (
 	{
@@ -68,13 +69,13 @@ export const DropdownMultiple = (
 				) : (
 					options?.map((option, index) => (
 						<DropdownItem key={index} onClick={() => handleSelectOption(option)}>
-							<input
+							<DropdownInput
 								type="checkbox"
 								id={option}
 								checked={selectedOptions.includes(option)}
 								onChange={() => handleSelectOption(option)}
 							/>
-							<span>{option}</span>
+							<DropdownSpan>{capitalizeFirstLetter(option)}</DropdownSpan>
 						</DropdownItem>
 					))
 				)}

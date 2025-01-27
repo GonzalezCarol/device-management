@@ -30,5 +30,6 @@ export const StyledButton = styled.button`
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
+        font-family: 'Inter', sans-serif;
     }
 `;

@@ -9,6 +9,7 @@ import {
 	TextField
 } from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
+import {capitalizeFirstLetter} from "../../utils/capitalizeFirstLetter/index.js";
 
 export const Dropdown = ({id, placeholder, label, onChange, options, selectedValue, name, width, top}) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +48,7 @@ export const Dropdown = ({id, placeholder, label, onChange, options, selectedVal
 				) : (
 					options?.map((option, index) => (
 						<DropdownItem key={index} onClick={() => handleSelectOption(option)}>
-							{option}
+							{capitalizeFirstLetter(option)}
 						</DropdownItem>
 					))
 				)}

@@ -5,10 +5,10 @@ import {StyledTextField, TextfieldContainer} from "./styles/index.jsx";
 export const Textfield = ({id, type, label, value, name, onChange, isRequired}) => {
 	return (
 		<TextfieldContainer>
-			<label>
+			<span>
 				{label}
 				{isRequired && <span>*</span>}
-			</label>
+			</span>
 			<StyledTextField
 				id={id}
 				data-testid={id}

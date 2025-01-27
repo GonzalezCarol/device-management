@@ -16,6 +16,7 @@ export const TextField = styled.input`
     width: ${(props) => props?.width || `${props.length + 2}ch`};
     min-width: 150px;
     max-width: 500px;
+    font-family: 'Inter', sans-serif;
 
     ::placeholder {
         color: #211F33;
@@ -51,7 +52,7 @@ export const DropdownItem = styled.li`
     padding: 10px;
     cursor: pointer;
     color: #211F33;
-
+    font-family: 'Inter', sans-serif;
     &:hover {
         background-color: #f1f1f1;
     }
@@ -65,6 +66,13 @@ export const ArrowIcon = styled.img`
     cursor: pointer;
 `
 
+export const DropdownInput = styled.input`
+    font-family: 'Inter', sans-serif;
+`
+
+export const DropdownSpan = styled.span`
+    font-family: 'Inter', sans-serif;
+`
 
 export const DropdownLabelContainer = styled.div`
     display: flex;

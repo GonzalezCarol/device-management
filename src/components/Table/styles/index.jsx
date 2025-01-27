@@ -16,6 +16,7 @@ export const TableHeader = styled.th`
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    font-family: 'Inter', sans-serif;
 
 `;
 
@@ -57,6 +58,7 @@ export const TableCell = styled.td`
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     align-items: flex-end;
+    font-family: 'Inter', sans-serif;
 `;
 
 export const TableContainer = styled.div`
@@ -76,6 +78,7 @@ export const Icon = styled.img`
 `
 export const Subtitle = styled.span`
     padding: 0 8px 4px;
+		font-family: 'Inter', sans-serif;
 `
 
 export const TableCellContainer = styled.th`

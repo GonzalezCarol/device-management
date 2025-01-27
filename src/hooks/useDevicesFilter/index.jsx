@@ -24,7 +24,7 @@ const sortFunctions = {
 };
 
 const dropDownFilterMultiple = (devices, value) => {
-	if (value) {
+	if (value.length > 0) {
 		return devices.filter(device => {
 			const selectedTypes = value.map(type => type.trim().toUpperCase());
 			return selectedTypes.includes(device?.type?.toUpperCase());

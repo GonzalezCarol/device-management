@@ -14,8 +14,8 @@ export const Button = ({label, onClick, icon, width, height, typeColor, backGrou
 			color={color}
 			{...rest}
 		>
-			{label && <span>{label}</span>}
 			{icon && <img src={icon} alt="button-icon"/>}
+			{label && <span>{label}</span>}
 		</StyledButton>
 	);
 };

@@ -12,6 +12,7 @@ export const StyledTextField = styled.input`
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+		font-family: 'Inter', sans-serif;
 
     &:focus {
         outline: none;
@@ -23,4 +24,8 @@ export const TextfieldContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
+		
+		& > span {
+				font-family: 'Inter', sans-serif;
+    }
 `

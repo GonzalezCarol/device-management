@@ -34,6 +34,7 @@ export const ModalTitle = styled.div`
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+		font-family: 'Inter', sans-serif;
 `
 export const TitleContainer = styled.div`
     display: flex;

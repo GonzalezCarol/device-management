@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
 	ArrowIcon,
@@ -6,26 +6,51 @@ import {
 	DropdownItem,
 	DropdownLabelContainer,
 	DropdownMenu,
-	TextField
+	TextField,
 } from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
 import {capitalizeFirstLetter} from "../../utils/capitalizeFirstLetter/index.js";
 
-export const Dropdown = ({id, placeholder, label, onChange, options, selectedValue, name, width, top}) => {
+export const Dropdown = ({
+	                         id,
+	                         placeholder,
+	                         label,
+	                         onChange,
+	                         options,
+	                         selectedValue,
+	                         name,
+	                         width,
+	                         top,
+                         }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const dropdownRef = useRef(null);
 
-	const toggleDropdown = () => setIsOpen(prev => !prev);
+	const toggleDropdown = () => setIsOpen((prev) => !prev);
 
 	const handleSelectOption = (type) => {
 		onChange({
 			type,
-			name
+			name,
 		});
 		setIsOpen(false);
 	};
 
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+				setIsOpen(false);
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+
 	return (
-		<DropdownContainer>
+		<DropdownContainer ref={dropdownRef}>
 			<DropdownLabelContainer>
 				<span>{label}</span>
 				<TextField
@@ -65,5 +90,5 @@ Dropdown.propTypes = {
 	selectedValue: PropTypes.string,
 	name: PropTypes.string,
 	width: PropTypes.number,
-	top: PropTypes.number
+	top: PropTypes.number,
 };

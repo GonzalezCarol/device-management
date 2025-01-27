@@ -5,7 +5,7 @@ import {ButtonContainer} from "./styles/index.jsx";
 import {useDeleteDevice} from "../../hooks/apiHooks/useDeleteDevice/index.js";
 import PropTypes from "prop-types";
 
-export const DeleteDeviceModal = ({isDeviceDeleModalOpen, onClose, deviceInfo}) => {
+export const DeleteDeviceModal = ({isDeviceDeleteModalOpen, onClose, deviceInfo}) => {
 
 	const {mutateAsync: deleteDevice} = useDeleteDevice();
 
@@ -17,7 +17,7 @@ export const DeleteDeviceModal = ({isDeviceDeleModalOpen, onClose, deviceInfo}) 
 	};
 
 	return (
-		<Modal isModalOpen={isDeviceDeleModalOpen} onClose={onClose} modalTitle="Delete device?">
+		<Modal isModalOpen={isDeviceDeleteModalOpen} onClose={onClose} modalTitle="Delete device?">
 			<div>
 				You are about to delete the device <strong>{deviceInfo?.deviceName}</strong> .This action cannot be undone.
 			</div>
@@ -30,7 +30,7 @@ export const DeleteDeviceModal = ({isDeviceDeleModalOpen, onClose, deviceInfo}) 
 };
 
 DeleteDeviceModal.propTypes = {
-	isDeviceDeleModalOpen: PropTypes.bool,
+	isDeviceDeleteModalOpen: PropTypes.bool,
 	onClose: PropTypes.func,
 	deviceInfo: PropTypes.shape({
 		deviceId: PropTypes.string,

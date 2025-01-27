@@ -1,18 +1,17 @@
 import React from "react";
 import '@testing-library/jest-dom';
-import {render, screen, fireEvent, waitFor} from "@testing-library/react";
-import {DeleteDeviceModal} from "../index.jsx";
-import {useDeleteDevice} from "../../../hooks/apiHooks/useDeleteDevice/index.js";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { DeleteDeviceModal } from "../index.jsx";
+import { useDeleteDevice } from "../../../hooks/apiHooks/useDeleteDevice/index.js";
 
 jest.mock('../../../assets/close-icon.svg', () => 'mocked-close-icon');
-
 jest.mock("../../../hooks/apiHooks/useDeleteDevice/index.js", () => ({
 	useDeleteDevice: jest.fn(),
 }));
 
 describe("DeleteDeviceModal", () => {
 	const mockOnClose = jest.fn();
-	const mockDeviceInfo = {deviceId: "123", deviceName: "Test Device"};
+	const mockDeviceInfo = { deviceId: "123", deviceName: "Test Device" };
 
 	beforeEach(() => {
 		useDeleteDevice.mockReturnValue({
@@ -23,7 +22,7 @@ describe("DeleteDeviceModal", () => {
 	it("renders correctly when modal is open", () => {
 		render(
 			<DeleteDeviceModal
-				isDeviceDeleModalOpen={true}
+				isDeviceDeleteModalOpen={true}
 				onClose={mockOnClose}
 				deviceInfo={mockDeviceInfo}
 			/>
@@ -38,7 +37,7 @@ describe("DeleteDeviceModal", () => {
 	it("closes the modal when 'Cancel' button is clicked", () => {
 		render(
 			<DeleteDeviceModal
-				isDeviceDeleModalOpen={true}
+				isDeviceDeleteModalOpen={true}
 				onClose={mockOnClose}
 				deviceInfo={mockDeviceInfo}
 			/>
@@ -55,7 +54,7 @@ describe("DeleteDeviceModal", () => {
 
 		render(
 			<DeleteDeviceModal
-				isDeviceDeleModalOpen={true}
+				isDeviceDeleteModalOpen={true}
 				onClose={mockOnClose}
 				deviceInfo={mockDeviceInfo}
 			/>
@@ -75,22 +74,22 @@ describe("DeleteDeviceModal", () => {
 
 		render(
 			<DeleteDeviceModal
-				isDeviceDeleModalOpen={true}
+				isDeviceDeleteModalOpen={true}
 				onClose={mockOnClose}
-				deviceInfo={{deviceId: null, deviceName: "Test Device"}}
+				deviceInfo={{ deviceId: null, deviceName: "Test Device" }}
 			/>
 		);
 
 		fireEvent.click(screen.getByText('Delete'));
 
 		expect(mockDeleteDevice).not.toHaveBeenCalled();
-		expect(mockOnClose).toHaveBeenCalled()
+		expect(mockOnClose).toHaveBeenCalled();
 	});
 
 	it("does not render anything when modal is closed", () => {
 		render(
 			<DeleteDeviceModal
-				isDeviceDeleModalOpen={false}
+				isDeviceDeleteModalOpen={false}
 				onClose={mockOnClose}
 				deviceInfo={mockDeviceInfo}
 			/>

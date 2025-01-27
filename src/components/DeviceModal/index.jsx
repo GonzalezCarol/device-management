@@ -40,7 +40,7 @@ export const DeviceModal = ({isDeviceModalOpen, onClose, devices, deviceId}) => 
 	};
 
 	return (
-		<Modal isModalOpen={isDeviceModalOpen} onClose={handleFormClose} modalTitle="Add Device">
+		<Modal isModalOpen={isDeviceModalOpen} onClose={handleFormClose} modalTitle={`${!deviceId ? 'Add device' : 'Edit device'}`}>
 			<DeviceForm
 				formData={formData}
 				options={options}

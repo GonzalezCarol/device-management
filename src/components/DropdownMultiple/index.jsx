@@ -1,32 +1,34 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 import {
 	ArrowIcon,
-	DropdownContainer, DropdownInput,
+	DropdownContainer,
+	DropdownInput,
 	DropdownItem,
 	DropdownLabelContainer,
-	DropdownMenu, DropdownSpan,
+	DropdownMenu,
+	DropdownSpan,
 	TextField,
 } from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
 import {capitalizeFirstLetter} from "../../utils/capitalizeFirstLetter/index.js";
 
-export const DropdownMultiple = (
-	{
-		id,
-		placeholder,
-		label,
-		onChange,
-		options,
-		selectedValue,
-		name,
-		width,
-		top,
-	}) => {
+export const DropdownMultiple = ({
+	                                 id,
+	                                 placeholder,
+	                                 label,
+	                                 onChange,
+	                                 options,
+	                                 selectedValue,
+	                                 name,
+	                                 width,
+	                                 top,
+                                 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedOptions, setSelectedOptions] = useState(
 		Array.isArray(selectedValue) ? selectedValue : []
 	);
+	const dropdownRef = useRef(null);
 
 	const toggleDropdown = () => setIsOpen((prev) => !prev);
 
@@ -42,14 +44,28 @@ export const DropdownMultiple = (
 	};
 
 	useEffect(() => {
-		if (!selectedValue[0]) {
+		if (selectedValue[0]?.length === 0) {
 			setSelectedOptions([]);
-			setIsOpen(false)
+			setIsOpen(false);
 		}
 	}, [selectedValue]);
 
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+				setIsOpen(false);
+			}
+		};
+
+		document.addEventListener('mousedown', handleClickOutside);
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+
 	return (
-		<DropdownContainer>
+		<DropdownContainer ref={dropdownRef}>
 			<DropdownLabelContainer onClick={toggleDropdown}>
 				<span>{label}</span>
 				<TextField

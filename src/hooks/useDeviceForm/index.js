@@ -2,42 +2,7 @@ import React, {useState} from 'react';
 import {useCreateDevice} from "../apiHooks/useCreateDevice/index.js";
 import {useDeviceDetail} from "../apiHooks/useDeviceDetail/index.jsx";
 import {useDeviceUpdate} from "../apiHooks/useDeviceUpdate/index.jsx";
-
-const validationRules = {
-	system_name: {
-		validate: [(value) => value.length > 0 ? true : 'System name is required.'],
-	},
-	type: {
-		validate: [(value) => value.length > 0 ? true : 'Type is required.'],
-	},
-	hdd_capacity: {
-		validate: [(value) => value.length > 0 ? true : 'HDD capacity is required.'],
-	},
-};
-
-const validateField = (fieldName, fieldValue) => {
-	const rules = validationRules[fieldName]?.validate;  // Access the validate array
-
-	if (rules) {
-		const errors = rules
-			.map(rule => rule(fieldValue))
-			.filter(error => error !== true);
-
-		return errors.length > 0 ? errors[0] : '';
-	}
-
-	return '';
-};
-
-
-const validateForm = (formData) => {
-	return Object.keys(formData).reduce((acc, field) => {
-		const error = validateField(field, formData[field]);
-		if (error) acc[field] = error;
-		return acc;
-	}, {});
-};
-
+import {validateForm} from "../useValidateForm/index.jsx";
 
 export const useDeviceForm = (deviceId = null) => {
 		const [formErrors, setFormErrors] = React.useState({

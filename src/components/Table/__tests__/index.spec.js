@@ -1,6 +1,6 @@
 import React from "react";
 import '@testing-library/jest-dom';
-import {render, screen, fireEvent, waitFor} from '@testing-library/react';
+import {render, screen, fireEvent} from '@testing-library/react';
 import {Table} from '../index.jsx';
 import {useMainProps} from "../../../contexts/MainContext/index.jsx";
 

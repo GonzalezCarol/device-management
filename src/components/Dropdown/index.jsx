@@ -10,7 +10,7 @@ import {
 } from './styles/index.jsx';
 import arrowDown from '../../assets/arrow-down.svg';
 
-export const Dropdown = ({placeholder, label, onChange, options, selectedValue, name, width, top}) => {
+export const Dropdown = ({id, placeholder, label, onChange, options, selectedValue, name, width, top}) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleDropdown = () => setIsOpen(prev => !prev);
@@ -28,6 +28,8 @@ export const Dropdown = ({placeholder, label, onChange, options, selectedValue, 
 			<DropdownLabelContainer>
 				<span>{label}</span>
 				<TextField
+					id={id}
+					data-testid={name}
 					value={selectedValue}
 					placeholder={placeholder}
 					onClick={toggleDropdown}

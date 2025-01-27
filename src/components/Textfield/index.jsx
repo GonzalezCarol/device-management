@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {StyledTextField, TextfieldContainer} from "./styles/index.jsx";
 
-export const Textfield = ({type, label, value, name, onChange, isRequired}) => {
+export const Textfield = ({id, type, label, value, name, onChange, isRequired}) => {
 	return (
 		<TextfieldContainer>
 			<label>
@@ -10,6 +10,8 @@ export const Textfield = ({type, label, value, name, onChange, isRequired}) => {
 				{isRequired && <span>*</span>}
 			</label>
 			<StyledTextField
+				id={id}
+				data-testid={id}
 				type={type}
 				name={name}
 				value={value}

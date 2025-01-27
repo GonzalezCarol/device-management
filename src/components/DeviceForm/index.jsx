@@ -14,10 +14,11 @@ export const DeviceForm = (
 	}) => (<>
 	<SpanContainer>
 		<Textfield
+			id="system_name"
+			name="system_name"
 			type="text"
 			label="System name *"
-			value={formData.system_name}
-			name="system_name"
+			value={formData.system_name || ''}
 			onChange={onChangeTextField}
 			width={100}
 		/>
@@ -25,13 +26,14 @@ export const DeviceForm = (
 	</SpanContainer>
 	<SpanContainer>
 		<Dropdown
+			id="type"
+			name="type"
 			label="Device type *"
 			placeholder="Select type"
 			onChange={onChangeDropdown}
 			options={options}
 			dropdownKey="type"
 			selectedValue={formData.type}
-			name="type"
 			width={100}
 			top={66}
 		/>
@@ -39,11 +41,12 @@ export const DeviceForm = (
 	</SpanContainer>
 	<SpanContainer>
 		<Textfield
+			id="hdd_capacity"
+			name="hdd_capacity"
 			type="number"
 			label="HDD capacity (GB)"
 			onChange={onChangeTextField}
-			value={formData.hdd_capacity}
-			name="hdd_capacity"
+			value={formData.hdd_capacity || ''}
 			width={100}
 		/>
 		<ErrorMessage>{formErrors.hdd_capacity}</ErrorMessage>

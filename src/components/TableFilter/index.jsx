@@ -11,7 +11,7 @@ import {optionsDeviceType} from "../../utils/deviceTypeOptions/index.js";
 export const TableFilter = () => {
 	const {devicesData: devices, selectedDropdowns, handleDropdownChange, handleRefreshChange} = useMainProps();
 
-	const options = optionsDeviceType(devices)
+	const options = optionsDeviceType(devices);
 
 	const onChangeDeviceType = (value) => {
 		handleDropdownChange('deviceType', value);

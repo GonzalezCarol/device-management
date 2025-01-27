@@ -69,7 +69,7 @@ In the front-end directory, run the following command to start the front-end ser
 npm run dev
 ```
 
-The front-end will now be accessible at `localhost:3000` (or the port specified in your configuration).
+The front-end will now be accessible at the port specified in your configuration.
 
 ---
 

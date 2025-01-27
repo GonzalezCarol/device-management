@@ -43,6 +43,11 @@ export const Main = () => {
 		}
 	};
 
+	const handleAddDevice = () => {
+		setDeviceId(null)
+		setIsDeviceModalOpen(true)
+	}
+
 	return (
 		<>
 			<Header/>
@@ -52,7 +57,7 @@ export const Main = () => {
 					<Button
 						label="Add device"
 						icon={addIcon}
-						onClick={() => setIsDeviceModalOpen(true)}
+						onClick={() => handleAddDevice()}
 					/>
 				</DeviceContainer>
 				<TableFilter/>
